@@ -8,6 +8,8 @@ public class WalkScript : MonoBehaviour {
     public float thrust = 1;
     public float dragValue;
     public int position;
+    public float attackRange;
+    public Rigidbody2D DIDITWORK;
 
     int UP = 0;
     int RIGHT = 1;
@@ -19,10 +21,13 @@ public class WalkScript : MonoBehaviour {
     }
 
     void Update() {
+
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
 
         myRigidBody.drag = dragValue;
         WalkFuction();
+        DIDITWORK = GetFacedObject();
+
     }
 
     //Movement Script Here
@@ -71,5 +76,34 @@ public class WalkScript : MonoBehaviour {
                 position = RIGHT;
             }
         }
+    }
+
+    public Rigidbody2D GetFacedObject()
+    {
+        Rigidbody2D rb;
+        Vector2 direction = new Vector2(0,0);
+        Vector2 origin = new Vector2(transform.position.x, transform.position.y);
+
+        if (position == UP)
+        {
+            direction = transform.up;
+        }
+        else if (position == RIGHT)
+        {
+            direction = transform.right;
+        }
+        else if (position == DOWN)
+        {
+            direction = -transform.up;
+        }
+        else if (position == LEFT)
+        {
+            direction = -transform.right;
+        }
+
+        rb = Physics2D.Raycast(origin, direction, attackRange).rigidbody;
+        Debug.DrawRay(origin, direction);
+
+        return rb;
     }
 }
