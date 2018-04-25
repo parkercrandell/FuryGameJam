@@ -6,10 +6,10 @@ public class WalkScript : MonoBehaviour {
 
     public Rigidbody2D myRigidBody;
     public float thrust = 1;
-    public float dragValue;
-    public int position;
-    public float attackRange;
-    public Rigidbody2D DIDITWORK;
+    public float dragValue = 1;
+    public int directionFaced;
+    public float attackRange = 1;
+    public float throwMagnitude = 1; 
 
     int UP = 0;
     int RIGHT = 1;
@@ -20,13 +20,13 @@ public class WalkScript : MonoBehaviour {
         myRigidBody = GetComponent<Rigidbody2D>();
     }
 
-    void Update() {
+    void Update()
+    {
 
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
 
         myRigidBody.drag = dragValue;
         WalkFuction();
-        DIDITWORK = GetFacedObject();
 
     }
 
@@ -58,45 +58,48 @@ public class WalkScript : MonoBehaviour {
             if (Input.GetKey(KeyCode.UpArrow))
             {
                 myRigidBody.AddForce(transform.up * thrust);
-                position = UP;
+                directionFaced = UP;
             }
             if (Input.GetKey(KeyCode.LeftArrow))
             {
                 myRigidBody.AddForce(transform.right * -thrust);
-                position = LEFT;
+                directionFaced = LEFT;
             }
             if (Input.GetKey(KeyCode.DownArrow))
             {
                 myRigidBody.AddForce(transform.up * -thrust);
-                position = DOWN;
+                directionFaced = DOWN;
             }
             if (Input.GetKey(KeyCode.RightArrow))
             {
                 myRigidBody.AddForce(transform.right * thrust);
-                position = RIGHT;
+                directionFaced = RIGHT;
             }
         }
     }
 
+    //Raycasts towards cardinal directions according to the position variable (set in WalkFunction);
+    //returns RigidBody of object
+    //Character has to be on IgnoreRayCast Layer
     public Rigidbody2D GetFacedObject()
     {
         Rigidbody2D rb;
         Vector2 direction = new Vector2(0,0);
         Vector2 origin = new Vector2(transform.position.x, transform.position.y);
-
-        if (position == UP)
+        
+        if (directionFaced == UP)
         {
             direction = transform.up;
         }
-        else if (position == RIGHT)
+        else if (directionFaced == RIGHT)
         {
             direction = transform.right;
         }
-        else if (position == DOWN)
+        else if (directionFaced == DOWN)
         {
             direction = -transform.up;
         }
-        else if (position == LEFT)
+        else if (directionFaced == LEFT)
         {
             direction = -transform.right;
         }
@@ -105,5 +108,26 @@ public class WalkScript : MonoBehaviour {
         Debug.DrawRay(origin, direction);
 
         return rb;
+    }
+
+    //Takes Rigidbody and returns the code to call fuctions from
+    //could add a check of whether the rigidbody is null or not?
+    public ObjectScript GetObjectCode(Rigidbody2D r)
+    {
+        return r.GetComponent<ObjectScript>();
+    }
+
+    //Checks if the z key had been pressed then calls Launch from the object detected from the FacedObject
+    //applies throwMagnitude to object
+    public void Throw()
+    {
+        if (Input.GetKey(KeyCode.Z))
+        {
+            Rigidbody2D r = GetFacedObject();
+            if (r != null && r.tag == "Object")
+            {
+                GetObjectCode(r).Launch(throwMagnitude, directionFaced);
+            }
+        }
     }
 }
