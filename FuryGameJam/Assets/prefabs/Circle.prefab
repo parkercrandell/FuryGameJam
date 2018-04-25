@@ -179,7 +179,7 @@ MonoBehaviour:
   dragValue: 6
   directionFaced: 0
   attackRange: 1
-  throwMagnitude: 1
+  kickMagnitude: 100
 --- !u!124 &124856975275850082
 Behaviour:
   m_ObjectHideFlags: 1

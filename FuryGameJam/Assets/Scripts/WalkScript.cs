@@ -27,6 +27,7 @@ public class WalkScript : MonoBehaviour {
 
         myRigidBody.drag = dragValue;
         WalkFuction();
+        Kick();
 
     }
 

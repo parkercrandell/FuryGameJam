@@ -5,6 +5,7 @@ using UnityEngine;
 public class ObjectScript : MonoBehaviour {
 
     public Rigidbody2D myRigidbody;
+    public float maxLaunchDeviationPercent = 0.2f;
 
     int UP = 0;
     int RIGHT = 1;
@@ -12,7 +13,7 @@ public class ObjectScript : MonoBehaviour {
     int LEFT = 3;
 
 	void Start () {
-        myRigidbody.GetComponent<Rigidbody2D>();
+        myRigidbody = GetComponent<Rigidbody2D>();
 	}
 	
 
@@ -23,21 +24,23 @@ public class ObjectScript : MonoBehaviour {
     //Adds force times M in direction according to dir 
     public void Launch(float m, int dir)
     {
+        float devation = Random.Range(-maxLaunchDeviationPercent, maxLaunchDeviationPercent);
         if (dir == UP)
         {
-            myRigidbody.AddForce(transform.up * m);
+            myRigidbody.AddForce( new Vector2(devation,1) * m);
         }
         else if (dir == RIGHT)
         {
-            myRigidbody.AddForce(transform.right * m);
+            myRigidbody.AddForce( new Vector2(1, devation) * m);
         }
         else if (dir == DOWN)
         {
-            myRigidbody.AddForce(-transform.up * m);
+            myRigidbody.AddForce( new Vector2(devation, 1) * -m);
         }
         else if (dir == LEFT)
         {
-            myRigidbody.AddForce(-transform.right * m);
+            myRigidbody.AddForce( new Vector2(1, devation) * -m);
         }
     }
+
 }

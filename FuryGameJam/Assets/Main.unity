@@ -152,6 +152,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114026074287850254, guid: 91d65b3b841b81a4cab0da765aa58cc2,
+        type: 2}
+      propertyPath: kickMagnitude
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91d65b3b841b81a4cab0da765aa58cc2, type: 2}
   m_IsPrefabParent: 0
@@ -452,6 +457,11 @@ Prefab:
     - target: {fileID: 1287866826923640, guid: a6e06c150d31e9d4397fdc808f38221a, type: 2}
       propertyPath: m_TagString
       value: Object
+      objectReference: {fileID: 0}
+    - target: {fileID: 50683457867035028, guid: a6e06c150d31e9d4397fdc808f38221a,
+        type: 2}
+      propertyPath: m_LinearDrag
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6e06c150d31e9d4397fdc808f38221a, type: 2}
