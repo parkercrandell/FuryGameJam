@@ -9,7 +9,7 @@ public class WalkScript : MonoBehaviour {
     public float dragValue = 1;
     public int directionFaced;
     public float attackRange = 1;
-    public float throwMagnitude = 1; 
+    public float kickMagnitude = 1; 
 
     int UP = 0;
     int RIGHT = 1;
@@ -119,14 +119,14 @@ public class WalkScript : MonoBehaviour {
 
     //Checks if the z key had been pressed then calls Launch from the object detected from the FacedObject
     //applies throwMagnitude to object
-    public void Throw()
+    public void Kick()
     {
         if (Input.GetKey(KeyCode.Z))
         {
             Rigidbody2D r = GetFacedObject();
             if (r != null && r.tag == "Object")
             {
-                GetObjectCode(r).Launch(throwMagnitude, directionFaced);
+                GetObjectCode(r).Launch(kickMagnitude, directionFaced);
             }
         }
     }
