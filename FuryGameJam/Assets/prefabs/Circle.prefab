@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 50806396061292406}
   - component: {fileID: 114026074287850254}
   - component: {fileID: 61187610291224490}
+  - component: {fileID: 114255287919166000}
   m_Layer: 2
   m_Name: Circle
   m_TagString: Player
@@ -68,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1286057475316604}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.9730487, y: -0.05102699, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4613855516912956}
@@ -180,6 +181,23 @@ MonoBehaviour:
   directionFaced: 0
   attackRange: 1
   kickMagnitude: 100
+--- !u!114 &114255287919166000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1286057475316604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d762c567bea074516a056487aa103d91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkRight0: {fileID: 21300000, guid: 77ca94ab2c74c48a1bf69d6f6bd30706, type: 3}
+  walkRight1: {fileID: 21300000, guid: c41a3cad73c024880abc747b33893873, type: 3}
+  walkRight2: {fileID: 21300000, guid: 665ae6b2e993f4d8ebb388fa7c85b7a8, type: 3}
+  walkLeft0: {fileID: 21300000, guid: 6d23fa5f937df4c0688d46641aca6dee, type: 3}
+  walkLeft1: {fileID: 21300000, guid: 5192de6fa61b5486a88f135c6f36b84e, type: 3}
+  walkLeft2: {fileID: 21300000, guid: d63407bccd32845a79e8a8776854d6bb, type: 3}
 --- !u!124 &124856975275850082
 Behaviour:
   m_ObjectHideFlags: 1
