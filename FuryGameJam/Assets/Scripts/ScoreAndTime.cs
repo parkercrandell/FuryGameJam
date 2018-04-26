@@ -29,7 +29,7 @@ public class ScoreAndTime : MonoBehaviour {
 		//just display the time left in integers
 		timeLeft = timeLeft - Time.deltaTime;
 		timeLeftInt = (int) timeLeft;
-		Debug.Log (timeLeftInt); //debugging
+		//Debug.Log (timeLeftInt); //debugging
 		
 	}
 

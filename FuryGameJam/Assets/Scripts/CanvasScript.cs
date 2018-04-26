@@ -12,6 +12,8 @@ public class CanvasScript : MonoBehaviour {
 	//the text field through code
 
 	public Text text; //the text that is displayed
+	public Text scoreField;
+	public Text timeField;
 	public Image cellphone; //reference to the cellphone image 
 
 	float timer = 1f;
@@ -20,7 +22,22 @@ public class CanvasScript : MonoBehaviour {
 	void Start () {
 		//When the game begins, start running the texts that are coming in
 		StartCoroutine (runTexts ());
-		
+	}
+
+	void Update(){
+		//Update the score and timer left fields
+		scoreField.text = "Score: " + ScoreAndTime.score;
+		timeField.text = "Time Remaining: " + ScoreAndTime.timeLeftInt;
+
+		RectTransform rectTrans = cellphone.GetComponent<RectTransform> ();
+		timer = timer - Time.deltaTime;
+		if (timer < 0 && timer > -.6f) {
+			rectTrans.rotation = Quaternion.Euler (0, 0, 5f);
+		} else if (timer < -.6f) {
+			timer = .6f;
+			rectTrans.rotation = Quaternion.Euler (0, 0, -11f);
+		}
+
 	}
 		
 
@@ -33,6 +50,7 @@ public class CanvasScript : MonoBehaviour {
 		createMessage ("test number 2",0);
 		yield return new WaitForSeconds (6f);
 		createMessage ("test over", 0);
+		///add more here...
 
 
 	}
