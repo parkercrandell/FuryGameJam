@@ -57,46 +57,15 @@ public class AnimationPlayer : MonoBehaviour {
 			Debug.Log ("WALKING LEFT");
 			if (animating == false) {
 				animating = true;
-				StartCoroutine (walkLeft ());
+				sr.sprite = walkLeft1;
 			}
 		}
 		if (keyHeld && !facingleft) {
 			if (animating == false) {
 				animating = true;
 				Debug.Log ("WALKING RIGHT");
-				StartCoroutine (walkRight ());
-			}
-		}
-	}
-
-	IEnumerator walkRight(){
-		while (keyHeld) {
-			sr.sprite = walkRight0;
-			yield return new WaitForSeconds (.2f);
-			sr.sprite = walkRight1;
-			yield return new WaitForSeconds (.2f);
-			if (keyHeld) {
-				sr.sprite = walkRight2;
-				yield return new WaitForSeconds (.2f);
 				sr.sprite = walkRight1;
-				yield return new WaitForSeconds (.2f);
 			}
-			
-		}
-	}
-	IEnumerator walkLeft(){
-		while (keyHeld) {
-			sr.sprite = walkLeft0;
-			yield return new WaitForSeconds (.2f);
-			sr.sprite = walkLeft1;
-			yield return new WaitForSeconds (.2f);
-			if (keyHeld) {
-				sr.sprite = walkLeft2;
-				yield return new WaitForSeconds (.2f);
-				sr.sprite = walkLeft1;
-				yield return new WaitForSeconds (.2f);
-			}
-
 		}
 	}
 }
