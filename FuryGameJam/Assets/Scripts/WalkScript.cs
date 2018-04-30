@@ -5,6 +5,7 @@ using UnityEngine;
 public class WalkScript : MonoBehaviour {
 
     public Rigidbody2D myRigidBody;
+    public SpriteRenderer mySprite;
     public float thrust = 1;
     public float dragValue = 1;
     public int directionFaced;
@@ -18,6 +19,7 @@ public class WalkScript : MonoBehaviour {
         
     void Start() {
         myRigidBody = GetComponent<Rigidbody2D>();
+        mySprite = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -40,7 +42,7 @@ public class WalkScript : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.RightArrow))
         {
-            myRigidBody.AddForce(new Vector2(0.707f, 0.707f) * thrust);
+            myRigidBody.AddForce(new Vector2(0.707f, 0.707f) * thrust);   
         }
         else if (Input.GetKey(KeyCode.UpArrow) && Input.GetKey(KeyCode.LeftArrow))
         {
@@ -65,6 +67,7 @@ public class WalkScript : MonoBehaviour {
             {
                 myRigidBody.AddForce(transform.right * -thrust);
                 directionFaced = LEFT;
+                mySprite.flipX = true;
             }
             if (Input.GetKey(KeyCode.DownArrow))
             {
@@ -75,6 +78,7 @@ public class WalkScript : MonoBehaviour {
             {
                 myRigidBody.AddForce(transform.right * thrust);
                 directionFaced = RIGHT;
+                mySprite.flipX = false;
             }
         }
     }
