@@ -27,6 +27,7 @@ public class CanvasScript : MonoBehaviour {
 	void Update(){
 		//Update the score and timer left fields
 		scoreField.text = "Score: " + ScoreAndTime.score;
+		print (ScoreAndTime.timeLeftInt);
 		timeField.text = "Time Remaining: " + ScoreAndTime.timeLeftInt;
 
 		RectTransform rectTrans = cellphone.GetComponent<RectTransform> ();
