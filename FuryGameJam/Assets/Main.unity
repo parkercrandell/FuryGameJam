@@ -118,7 +118,11 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+<<<<<<< HEAD
     m_TransformParent: {fileID: 1281908225}
+=======
+    m_TransformParent: {fileID: 1587656637}
+>>>>>>> master
     m_Modifications:
     - target: {fileID: 224706933615013190, guid: 8c329bbb89d69444ca2fb006cbaff597,
         type: 2}
@@ -464,6 +468,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a6e06c150d31e9d4397fdc808f38221a, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1587656637 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4647497480227744, guid: 91d65b3b841b81a4cab0da765aa58cc2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1090719538}
 --- !u!1 &1932735770
 GameObject:
   m_ObjectHideFlags: 0
