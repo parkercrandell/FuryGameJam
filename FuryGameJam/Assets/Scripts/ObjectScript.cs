@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectScript : MonoBehaviour {
 
     public Rigidbody2D myRigidbody;
-    public BoxCollider2D myBox;
+    public SpriteRenderer mySprite;
     public ScoreAndTime MyScore;
     public float maxLaunchDeviationPercent = 0.2f;
     public float maxHealth = 5;
@@ -13,6 +13,8 @@ public class ObjectScript : MonoBehaviour {
     public int scoreWhenBroken = 100;
     public int scoreOnCollision = 20;
     public float damageOnCollision = 2;
+    public Color white = new Color(255 / 255, 255 / 255, 255 / 255);
+    public Color damagedColor = new Color(255 / 255, 86 / 255, 86 / 255);
 
     int UP = 0;
     int RIGHT = 1;
@@ -21,20 +23,25 @@ public class ObjectScript : MonoBehaviour {
 
 	void Start () {
         myRigidbody = GetComponent<Rigidbody2D>();
-        myBox = GetComponent<BoxCollider2D>();
+        mySprite = GetComponent<SpriteRenderer>();
         MyScore = GameObject.Find("Timer").GetComponent<ScoreAndTime>();
         health = maxHealth;
-	}
-	
 
-	void Update () {
+        white = new Color(255 / 255, 255 / 255, 255 / 255);
+        damagedColor = new Color(255 / 255, 86 / 255, 86 / 255);
+    }
+
+
+    void Update()
+    {
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
-        if(health < 1)
+        mySprite.color = Color.Lerp(white, damagedColor, ((maxHealth - health) / maxHealth));
+        if (health < 1)
         {
             ScoreAndTime.addToScore(scoreWhenBroken);
-            Destroy(this);
+            Destroy(gameObject);
         }
-	}
+    }
 
     //h is how much health to be subrtacted from helath
     public void LoseHealth(float h)

@@ -6,6 +6,8 @@ public class WalkScript : MonoBehaviour {
 
     public Rigidbody2D myRigidBody;
     public SpriteRenderer mySprite;
+    public ScoreAndTime MyScore;
+    public float ragePercent;
     public float thrust = 1;
     public float dragValue = 1;
     public int directionFaced;
@@ -20,11 +22,12 @@ public class WalkScript : MonoBehaviour {
     void Start() {
         myRigidBody = GetComponent<Rigidbody2D>();
         mySprite = GetComponent<SpriteRenderer>();
+        MyScore = GameObject.Find("Timer").GetComponent<ScoreAndTime>();
     }
 
     void Update()
     {
-
+        ragePercent = (ScoreAndTime.rageLevel / 100);
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
 
         myRigidBody.drag = dragValue;
@@ -134,5 +137,18 @@ public class WalkScript : MonoBehaviour {
                 GetObjectCode(r).Launch(kickMagnitude, directionFaced);
             }
         }
+    }
+
+    public void Bash()
+    {
+        if (Input.GetKey(KeyCode.X))
+        {
+            Rigidbody2D r = GetFacedObject();
+            if (r != null && r.tag == "Object")
+            {
+                GetObjectCode(r).LoseHealth(3 + (4 * ragePercent));
+            }
+        }
+
     }
 }
