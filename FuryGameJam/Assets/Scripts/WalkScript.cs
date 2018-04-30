@@ -12,7 +12,11 @@ public class WalkScript : MonoBehaviour {
     public float dragValue = 1;
     public int directionFaced;
     public float attackRange = 1;
-    public float kickMagnitude = 1; 
+    public float bashDamage = 3;
+    public float maxRageDamage = 4; 
+    public float kickMagnitude = 100;
+    public float maxRageKickMagnitude = 100;
+
 
     int UP = 0;
     int RIGHT = 1;
@@ -33,7 +37,7 @@ public class WalkScript : MonoBehaviour {
         myRigidBody.drag = dragValue;
         WalkFuction();
         Kick();
-
+        Bash();
     }
 
     //Movement Script Here
@@ -134,7 +138,7 @@ public class WalkScript : MonoBehaviour {
             Rigidbody2D r = GetFacedObject();
             if (r != null && r.tag == "Object")
             {
-                GetObjectCode(r).Launch(kickMagnitude, directionFaced);
+                GetObjectCode(r).Launch(kickMagnitude + (maxRageKickMagnitude * ragePercent), directionFaced);
             }
         }
     }
@@ -146,7 +150,7 @@ public class WalkScript : MonoBehaviour {
             Rigidbody2D r = GetFacedObject();
             if (r != null && r.tag == "Object")
             {
-                GetObjectCode(r).LoseHealth(3 + (4 * ragePercent));
+                GetObjectCode(r).LoseHealth(bashDamage + (maxRageDamage * ragePercent));
             }
         }
 
