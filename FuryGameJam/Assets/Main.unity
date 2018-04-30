@@ -118,11 +118,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-<<<<<<< HEAD
     m_TransformParent: {fileID: 1281908225}
-=======
-    m_TransformParent: {fileID: 1587656637}
->>>>>>> master
     m_Modifications:
     - target: {fileID: 224706933615013190, guid: 8c329bbb89d69444ca2fb006cbaff597,
         type: 2}
