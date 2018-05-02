@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Nina Demirjian and Parker Crandell 2018
+
 public class ObjectScript : MonoBehaviour {
 
+	//Variable setup
     public Rigidbody2D myRigidbody;
     public SpriteRenderer mySprite;
     public ScoreAndTime MyScore;

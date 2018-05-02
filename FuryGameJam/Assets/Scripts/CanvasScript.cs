@@ -18,7 +18,7 @@ public class CanvasScript : MonoBehaviour {
 	public Image rageLevel;
 
 
-	float timer = 1f;
+	float timer = 1f;//used for rotating the phone
 
 	// Use this for initialization
 	void Start () {
@@ -31,23 +31,20 @@ public class CanvasScript : MonoBehaviour {
 		scoreField.text = "Score: " + ScoreAndTime.score;
 		timeField.text = "Time Remaining: " + ScoreAndTime.timeLeftInt;
 
+		//Juice: rotates the phone back and forth every .6 seconds
 		RectTransform rectTrans = cellphone.GetComponent<RectTransform> ();
 		timer = timer - Time.deltaTime;
-		if (timer < 0 && timer > -.6f) {
+		if (timer < 0 && timer > -.6f) { //rotate one way...
 			rectTrans.rotation = Quaternion.Euler (0, 0, 5f);
-		} else if (timer < -.6f) {
+		} else if (timer < -.6f) { //rotate the other way and reset timer
 			timer = .6f;
 			rectTrans.rotation = Quaternion.Euler (0, 0, -11f);
 		}
 
-		if (ScoreAndTime.rageLevel < 100f) {
+		if (ScoreAndTime.rageLevel < 100f) { //don't add anything more to the rage bar so that the thermometer doesnt go over the top
 			Vector3 newScale = new Vector3 (rageLevel.GetComponent<RectTransform> ().localScale.x, ScoreAndTime.rageLevel / 100f, rageLevel.GetComponent<RectTransform> ().localScale.z);
-
 			rageLevel.GetComponent<RectTransform> ().localScale = newScale;
 		}
-
-
-
 	}
 		
 
@@ -116,15 +113,11 @@ public class CanvasScript : MonoBehaviour {
 		createMessage ("Stacy: He's leaving? Girl, I think he's coming home. Get ready to call him out", 4, stacy);
 		createMessage ("Chad: I'll be home soon. You know you're the only girl for me, right?", 12, chad);
 		yield return new WaitForSeconds (5f);
-
-
 		///add more here...
-
-
 	}
 
-
 	//Just a helper method to change the text on the screen and add to the rage level.
+	//color is taken in so that different people have different colored texts
 	void createMessage(string newMessage, int rageAdd, Color color){
 		text.text = newMessage;
 		text.color = color;

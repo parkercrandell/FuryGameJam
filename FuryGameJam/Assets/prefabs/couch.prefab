@@ -54,7 +54,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1.5
+  m_Mass: 2.18
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -103,9 +103,9 @@ MonoBehaviour:
   mySprite: {fileID: 0}
   MyScore: {fileID: 0}
   maxLaunchDeviationPercent: 0.2
-  maxHealth: 5
+  maxHealth: 30
   health: 0
-  scoreWhenBroken: 100
+  scoreWhenBroken: 300
   scoreOnCollision: 20
   damageOnCollision: 2
   white: {r: 1, g: 1, b: 1, a: 1}

@@ -103,9 +103,9 @@ MonoBehaviour:
   mySprite: {fileID: 0}
   MyScore: {fileID: 0}
   maxLaunchDeviationPercent: 0.2
-  maxHealth: 5
+  maxHealth: 10
   health: 0
-  scoreWhenBroken: 100
+  scoreWhenBroken: 150
   scoreOnCollision: 20
   damageOnCollision: 2
   white: {r: 1, g: 1, b: 1, a: 1}

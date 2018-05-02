@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Nina Demirjian and Parker Crandell 2018
+
 public class WalkScript : MonoBehaviour {
 
     public Rigidbody2D myRigidBody;
