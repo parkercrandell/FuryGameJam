@@ -10,12 +10,14 @@ public class ObjectScript : MonoBehaviour {
     public Rigidbody2D myRigidbody;
     public SpriteRenderer mySprite;
     public ScoreAndTime MyScore;
-    public float maxLaunchDeviationPercent = 0.2f;
+    public float maxLaunchDeviationPercent = 0.9f;
     public float maxHealth = 5;
     public float health;
     public int scoreWhenBroken = 100;
     public int scoreOnCollision = 20;
+    public float maxLaunchBoostWhileDamaged = 50;
     public float damageOnCollision = 2;
+
     public Color white = new Color(255 / 255, 255 / 255, 255 / 255);
     public Color damagedColor = new Color(255 / 255, 86 / 255, 86 / 255);
 
@@ -29,7 +31,7 @@ public class ObjectScript : MonoBehaviour {
         mySprite = GetComponent<SpriteRenderer>();
         MyScore = GameObject.Find("Timer").GetComponent<ScoreAndTime>();
         health = maxHealth;
-
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
         white = new Color(255 / 255, 255 / 255, 255 / 255);
         damagedColor = new Color(255 / 255, 86 / 255, 86 / 255);
     }
@@ -39,6 +41,7 @@ public class ObjectScript : MonoBehaviour {
     {
         transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.y);
         mySprite.color = Color.Lerp(white, damagedColor, ((maxHealth - health) / maxHealth));
+
         if (health < 1)
         {
             ScoreAndTime.addToScore(scoreWhenBroken);
@@ -53,9 +56,12 @@ public class ObjectScript : MonoBehaviour {
     }
     
     //Adds force times M in direction according to dir 
+    //Adds additional maxLaunchBoostWhileDamaged multiplied by health percentage
     public void Launch(float m, int dir)
     {
         float devation = Random.Range(-maxLaunchDeviationPercent, maxLaunchDeviationPercent);
+        m = m + (maxLaunchBoostWhileDamaged * ((maxHealth - health) / maxHealth));  
+
         if (dir == UP)
         {
             myRigidbody.AddForce( new Vector2(devation,1) * m);
@@ -74,6 +80,7 @@ public class ObjectScript : MonoBehaviour {
         }
     }
 
+    //adds respective scoreOnCollision and damageOnCollision upon colliding with object or wall
     void OnCollisionEnter2D (Collision2D coll)
     {
         if (coll.gameObject.tag == "Object" || coll.gameObject.tag == "Wall")
@@ -82,8 +89,4 @@ public class ObjectScript : MonoBehaviour {
             LoseHealth(damageOnCollision);
         }
     }
-    
-
-
-
 }

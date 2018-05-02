@@ -55,7 +55,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.3
-  m_LinearDrag: 1
+  m_LinearDrag: 0.8
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 40db6e372f25de64f93937b32dca9522, type: 2}
@@ -100,7 +100,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myRigidbody: {fileID: 0}
+  mySprite: {fileID: 0}
+  MyScore: {fileID: 0}
   maxLaunchDeviationPercent: 0.2
+  maxHealth: 5
+  health: 0
+  scoreWhenBroken: 100
+  scoreOnCollision: 20
+  maxLaunchBoostWhileDamaged: 1000
+  damageOnCollision: 2
+  white: {r: 1, g: 1, b: 1, a: 1}
+  damagedColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!212 &212777122095199062
 SpriteRenderer:
   m_ObjectHideFlags: 1

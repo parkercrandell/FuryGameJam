@@ -55,7 +55,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 0.74
-  m_LinearDrag: 1
+  m_LinearDrag: 0.8
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 40db6e372f25de64f93937b32dca9522, type: 2}
@@ -107,6 +107,7 @@ MonoBehaviour:
   health: 0
   scoreWhenBroken: 150
   scoreOnCollision: 20
+  maxLaunchBoostWhileDamaged: 1000
   damageOnCollision: 2
   white: {r: 1, g: 1, b: 1, a: 1}
   damagedColor: {r: 1, g: 0, b: 0, a: 1}
